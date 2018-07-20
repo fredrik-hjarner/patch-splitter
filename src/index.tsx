@@ -1,5 +1,6 @@
 import { ConnectedRouter } from "connected-react-router";
 import * as React from "react";
+import { StrictMode } from "react";
 import { render } from "react-dom";
 import { Provider } from "react-redux";
 import { Redirect, Route, Switch } from "react-router";
@@ -11,7 +12,7 @@ import "styles/global";
 
 const Routes = () => (
   <Switch>
-    <Route exact path="/" component={Home}/>
+    <Route exact path="/" component={() => <StrictMode><Home/></StrictMode>}/>
     <Redirect path="*" to="/"/>
   </Switch>
 );
@@ -19,9 +20,7 @@ const Routes = () => (
 const Root = () => (
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <React.StrictMode>
-        <Routes/>
-      </React.StrictMode>
+      <Routes/>
     </ConnectedRouter>
   </Provider>
 );

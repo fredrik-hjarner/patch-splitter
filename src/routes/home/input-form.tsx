@@ -1,15 +1,19 @@
 import * as React from "react";
 import { Button, Form, TextArea } from "semantic-ui-react";
-import { lf } from "utils";
+import { lf, splitPerFile } from "utils";
 
-export class Home extends React.Component {
+type Props = {
+  onDone: (files: string[]) => void,
+};
+
+export class InputForm extends React.Component<Props> {
   private input = "";
 
   public render() {
 
     return (
-      <div style={{ width: "400px" }}>
-        <h2>Patch/diff splitter</h2>
+      <div>
+        <h2>Input</h2>
         <Form onSubmit={this.load}>
           <Form.Field>
             <TextArea onChange={this.handleChange} rows={20}/>
@@ -22,7 +26,11 @@ export class Home extends React.Component {
 
   private load = () => {
     const text = lf(this.input);
-    console.log(text);
+    // take out the header (if one exists).
+    // take out the footer (if one exists).
+    const files = splitPerFile(text);
+
+    this.props.onDone(files);
   }
 
   private handleChange = (_: any, { value }: { value: string}) => { // TODO: how do I write this type???
