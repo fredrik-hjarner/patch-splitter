@@ -1,35 +1,28 @@
-import { block } from 'components';
-import { compose } from 'ramda';
 import * as React from 'react';
-import { CSSProperties } from 'react';
-import { Icon } from 'semantic-ui-react';
-import { randomBgColor } from 'utils';
-
-// OMG. This is awesome!
-const MyIcon = compose(block)(Icon);
-
-type StyleMap = {
-  [key in 'rows' ]: CSSProperties
-};
-
-const styles: StyleMap = {
-  rows: {
-    border: 'solid 1px black',
-  },
-};
+import { Icon, Menu, SemanticICONS, SemanticCOLORS } from 'semantic-ui-react';
 
 type Props = {
   file: string,
 };
 
+const menuStyle = {
+  borderTopRightRadius: 0,
+};
+
 export class Actions extends React.Component<Props> {
   public render() {
     return (
-      <div style={styles.rows}>
-        <MyIcon name="add" size="big" style={randomBgColor()} {...this.props}/>
-        <MyIcon name="alarm" size="big" style={randomBgColor()} {...this.props}/>
-        <MyIcon name="anchor" size="big" style={randomBgColor()} {...this.props}/>
-      </div>
+      <Menu icon vertical borderless compact style={menuStyle}>
+        {this.renderIcon('add')}
+        {this.renderIcon('alarm')}
+        {this.renderIcon('anchor')}
+      </Menu>
     );
   }
+
+  private renderIcon = (name: SemanticICONS, color?: SemanticCOLORS) => (
+    <Menu.Item name={name} color={color} link>
+      <Icon name={name} size="large"/>
+    </Menu.Item>
+  )
 }
