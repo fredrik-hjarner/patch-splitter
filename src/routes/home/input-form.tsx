@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { Button, Form, TextArea } from 'semantic-ui-react';
-import { lf, splitPerFile } from 'utils';
+import { lf } from 'utils';
+import { Context } from './home';
 
-type Props = {
-  onDone: (files: string[]) => void,
-};
+// type Props = {
+//   onDone: (files: string[]) => void,
+// };
 
-export class InputForm extends React.Component<Props> {
+export class InputForm extends React.Component {
   // TODO: remove mockup
   private input = `............................
 diff --git 111111111
@@ -42,23 +43,28 @@ diff --git
     return (
       <div>
         <h2>Original input</h2>
-        <Form onSubmit={this.load}>
-          <Form.Field>
-            <TextArea onChange={this.handleChange} rows={30}/>
-          </Form.Field>
-          <Button type="submit">Load</Button>
-        </Form>
+        <Context.Consumer>
+          {({ changeInput }) => (
+            <Form onSubmit={() => this.load(changeInput)}>
+              <Form.Field>
+                <TextArea onChange={this.handleChange} rows={30}/>
+              </Form.Field>
+              <Button type="submit">Load</Button>
+            </Form>
+          )}
+        </Context.Consumer>
       </div>
     );
   }
 
-  private load = () => {
+  private load = (changeInput: any) => {
     const text = lf(this.input);
     // take out the header (if one exists).
     // take out the footer (if one exists).
-    const files = splitPerFile(text);
+    // const files = splitPerFile(text);
 
-    this.props.onDone(files);
+    // this.props.onDone(files);
+    changeInput(text);
   }
 
   private handleChange = (_: any, { value }: { value: string}) => { // TODO: how do I write this type???

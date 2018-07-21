@@ -10,7 +10,8 @@
       "interface-over-type-literal": false,
       "quotemark": [true, "single", "jsx-double"],
       "max-classes-per-file": false,
-      "no-empty": false
+      "no-empty": false,
+      "arrow-parens": false
     },
     "rulesDirectory": []
 }

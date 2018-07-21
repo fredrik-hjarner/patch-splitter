@@ -1,8 +1,9 @@
 import * as React from 'react';
+import { FileType } from 'routes/home/home';
 import { Icon, Menu, SemanticCOLORS, SemanticICONS } from 'semantic-ui-react';
 
 type Props = {
-  file: string,
+  file: FileType,
 };
 
 const menuStyle = {
@@ -14,7 +15,7 @@ export class Actions extends React.Component<Props> {
     return (
       <Menu icon vertical borderless compact style={menuStyle}>
         {this.renderIcon('toggle on', 'green')}
-        {this.renderIcon('save', 'blue')}
+        {this.renderIcon('download', 'blue')}
         {this.renderIcon('hide')}
       </Menu>
     );

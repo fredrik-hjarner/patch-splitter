@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { CSSProperties } from 'react';
+import { FileType } from 'routes/home/home';
 import { Actions } from 'routes/home/output/actions';
 import { randomBgColor } from 'utils';
 
@@ -15,8 +16,7 @@ const styles: StyleMap = {
 };
 
 type Props = {
-  index: number,
-  file: string,
+  file: FileType,
 };
 
 export class File extends React.Component<Props> {
@@ -31,7 +31,7 @@ export class File extends React.Component<Props> {
     );
   }
 
-  private renderText = () => <pre style={this.createStyle()}>{this.props.file}</pre>;
+  private renderText = () => <pre style={this.createStyle()}>{this.props.file.text}</pre>;
 
   private createStyle = () => ({
     margin: 0,
