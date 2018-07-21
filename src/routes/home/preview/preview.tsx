@@ -2,13 +2,12 @@ import * as React from 'react';
 import { Button, Form } from 'semantic-ui-react';
 
 type Props = {
-  data: string[],
+  data: string,
 };
 
 export class Preview extends React.Component<Props> {
   public render() {
-
-    const text = this.props.data.join('');
+    const { data } = this.props;
 
     return (
       <div>
@@ -17,7 +16,7 @@ export class Preview extends React.Component<Props> {
           <Button type="submit" primary>Download</Button>
           <Button type="submit" color="green">Validate</Button>
         </Form>
-        {this.renderText(text)}
+        {this.renderText(data)}
       </div>
     );
   }

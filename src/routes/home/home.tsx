@@ -2,7 +2,7 @@ import * as React from 'react';
 import { createContext, CSSProperties } from 'react';
 import { InputForm } from 'routes/home/input-form';
 import { Output } from 'routes/home/output/output';
-// import { Preview } from 'routes/home/preview/preview';
+import { Preview } from 'routes/home/preview/preview';
 import { splitPerFile } from 'utils';
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -72,7 +72,7 @@ export class Home extends React.Component<{}, State> {
           <Context.Provider value={{ ...this.state, ...this.handlers }}>
             <InputForm/>
             <Output/>
-            {/* <Preview data={this.state.output}/> */}
+            <Preview data={this.state.result}/>
           </Context.Provider>
         </div>
       </div>
@@ -88,6 +88,7 @@ export class Home extends React.Component<{}, State> {
 
     this.setState({
       input: text,
+      result: text,
       workInProgress: files,
     });
   }
