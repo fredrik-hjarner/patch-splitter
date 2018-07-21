@@ -13,9 +13,9 @@ export class Actions extends React.Component<Props> {
   public render() {
     return (
       <Menu icon vertical borderless compact style={menuStyle}>
+        {this.renderIcon('toggle on', 'green')}
+        {this.renderIcon('save', 'blue')}
         {this.renderIcon('hide')}
-        {this.renderIcon('save', 'olive')}
-        {this.renderIcon('remove', 'red')}
       </Menu>
     );
   }

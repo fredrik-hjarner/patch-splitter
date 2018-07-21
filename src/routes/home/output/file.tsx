@@ -15,6 +15,7 @@ const styles: StyleMap = {
 };
 
 type Props = {
+  index: number,
   file: string,
 };
 

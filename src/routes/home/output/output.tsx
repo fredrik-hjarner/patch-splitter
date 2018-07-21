@@ -13,7 +13,7 @@ export class Output extends React.Component<Props> {
         <h2>Work in progress</h2>
         <div>
           {this.props.output.map((o, i) => (
-            <File key={i} file={o}/>
+            <File key={i} index={i} file={o}/>
           ))}
         </div>
       </div>
