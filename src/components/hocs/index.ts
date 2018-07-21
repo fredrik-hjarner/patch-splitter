@@ -1,1 +1,1 @@
-export * from './semantic-ui-react';
+export * from 'components/hocs/semantic-ui-react';

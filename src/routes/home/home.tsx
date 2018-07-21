@@ -2,6 +2,7 @@ import * as React from 'react';
 import { CSSProperties } from 'react';
 import { InputForm } from 'routes/home/input-form';
 import { Output } from 'routes/home/output/output';
+import { Preview } from 'routes/home/preview/preview';
 
 type StyleMap = {
   [key in 'header' | 'page' | 'columns' ]: CSSProperties
@@ -15,17 +16,17 @@ const styles: StyleMap = {
   },
 
   page: {
-    display: 'grid',
-    gridTemplateRows: 'auto 1fr',
-    height: '100vh',
-    position: 'relative',
+    // display: 'grid',
+    // gridTemplateRows: 'auto 1fr',
+    // height: '100vh',
+    // position: 'relative',
   },
 
   columns: {
     display: 'grid',
     gridGap: '30px',
-    gridTemplateColumns: 'repeat(2, 1fr)',
-    height: '100%',
+    gridTemplateColumns: 'repeat(3, 33.33%)',
+    // height: '100%',
     padding: '30px',
   },
 
@@ -47,6 +48,7 @@ export class Home extends React.Component<{}, State> {
         <div style={styles.columns}>
           <InputForm onDone={this.handleDone}/>
           <Output output={this.state.output}/>
+          <Preview data={this.state.output}/>
         </div>
       </div>
     );

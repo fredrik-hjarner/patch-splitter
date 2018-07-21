@@ -1,1 +1,1 @@
-export * from './hocs';
+export * from 'components/hocs';

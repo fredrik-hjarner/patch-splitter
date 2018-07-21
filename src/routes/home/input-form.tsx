@@ -20,8 +20,15 @@ diff --git
 gggggggggggggggggggg
 hhhhhhhhhhhhhhhhhhh
 iiiiiiiiiiiiiiiiiiiiiiiiiiii
+gggggggggggggggggggg
+hhhhhhhhhhhhhhhhhhh
+iiiiiiiiiiiiiiiiiiiiiiiiiiii
+gggggggggggggggggggg
+hhhhhhhhhhhhhhhhhhh
+iiiiiiiiiiiiiiiiiiiiiiiiiiii
 jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
-kkkkkkkkkkkkkkkkkkkkdiff --git
+kkkkkkkkkkkkkkkkkkkk
+diff --git
 llllllllllllllllllllllllllllllllllllllll
 mmmmmmmmmmmmmmmmmm
 nnnnnnnnnnnnnnnnn
@@ -34,10 +41,10 @@ diff --git
 
     return (
       <div>
-        <h2>Input</h2>
+        <h2>Original input</h2>
         <Form onSubmit={this.load}>
           <Form.Field>
-            <TextArea onChange={this.handleChange} rows={20}/>
+            <TextArea onChange={this.handleChange} rows={30}/>
           </Form.Field>
           <Button type="submit">Load</Button>
         </Form>

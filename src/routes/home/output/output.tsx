@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { File } from './file';
+import { File } from 'routes/home/output/file';
 
 type Props = {
   output: string[],
@@ -10,7 +10,7 @@ export class Output extends React.Component<Props> {
 
     return (
       <div>
-        <h2>Output</h2>
+        <h2>Work in progress</h2>
         <div>
           {this.props.output.map((o, i) => (
             <File key={i} file={o}/>

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { CSSProperties } from 'react';
-import { Actions } from 'routes/home/output/actions';
 import { randomBgColor } from 'utils';
+import { Actions } from './actions';
 
 type StyleMap = {
   [key in 'columns' ]: CSSProperties
@@ -23,9 +23,7 @@ export class File extends React.Component<Props> {
     return (
       <div style={styles.columns}>
         <Actions file={this.props.file}/>
-        <div style={{ overflowX: 'auto', overflowY: 'visible', height: '100%', ...randomBgColor() }}>
-          {this.renderText()}
-        </div>
+        {this.renderText()}
       </div>
     );
   }
@@ -33,6 +31,8 @@ export class File extends React.Component<Props> {
   private renderText = () => <pre style={this.createStyle()}>{this.props.file}</pre>;
 
   private createStyle = () => ({
+    ...randomBgColor(),
+    height: '100%',
     margin: 0,
     padding: 0,
   })
