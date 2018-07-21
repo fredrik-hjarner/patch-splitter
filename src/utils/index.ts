@@ -1,2 +1,3 @@
-export { lf } from "./lf";
-export { splitPerFile } from "./split-per-file";
+export { lf } from 'utils/lf';
+export { splitPerFile } from 'utils/split-per-file';
+export { randomBgColor } from './random-bg-color';

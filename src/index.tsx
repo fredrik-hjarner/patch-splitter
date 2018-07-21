@@ -1,14 +1,14 @@
-import { ConnectedRouter } from "connected-react-router";
-import * as React from "react";
-import { StrictMode } from "react";
-import { render } from "react-dom";
-import { Provider } from "react-redux";
-import { Redirect, Route, Switch } from "react-router";
-import { history } from "redux/history";
-import { store } from "redux/store";
-import { Home } from "routes";
-import "semantic-ui-css/semantic.min.css";
-import "styles/global";
+import { ConnectedRouter } from 'connected-react-router';
+import * as React from 'react';
+import { StrictMode } from 'react';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { Redirect, Route, Switch } from 'react-router';
+import { history } from 'redux/history';
+import { store } from 'redux/store';
+import { Home } from 'routes';
+import 'semantic-ui-css/semantic.min.css';
+import 'styles/global';
 
 const Routes = () => (
   <Switch>
@@ -25,4 +25,4 @@ const Root = () => (
   </Provider>
 );
 
-render(<Root/>, document.getElementById("react-root"));
+render(<Root/>, document.getElementById('react-root'));

@@ -1,1 +1,1 @@
-export const lf = (text: string): string => text.replace("\r\n", "\n");
+export const lf = (text: string): string => text.replace('\r\n', '\n');

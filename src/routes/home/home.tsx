@@ -1,32 +1,32 @@
-import * as React from "react";
-import { CSSProperties } from "react";
-import { InputForm } from "./input-form";
-import { Output } from "./output";
+import * as React from 'react';
+import { CSSProperties } from 'react';
+import { InputForm } from 'routes/home/input-form';
+import { Output } from 'routes/home/output/output';
 
 type StyleMap = {
-  [key in "header" | "page" | "columns" ]: CSSProperties
+  [key in 'header' | 'page' | 'columns' ]: CSSProperties
 };
 
 const styles: StyleMap = {
 
   header: {
-    padding: "50px 0 10px 0",
-    textAlign: "center",
+    padding: '50px 0 10px 0',
+    textAlign: 'center',
   },
 
   page: {
-    display: "grid",
-    gridTemplateRows: "auto 1fr",
-    height: "100vh",
-    position: "relative",
+    display: 'grid',
+    gridTemplateRows: 'auto 1fr',
+    height: '100vh',
+    position: 'relative',
   },
 
   columns: {
-    display: "grid",
-    gridGap: "30px",
-    gridTemplateColumns: "repeat(2, 1fr)",
-    height: "100%",
-    padding: "30px",
+    display: 'grid',
+    gridGap: '30px',
+    gridTemplateColumns: 'repeat(2, 1fr)',
+    height: '100%',
+    padding: '30px',
   },
 
 };
