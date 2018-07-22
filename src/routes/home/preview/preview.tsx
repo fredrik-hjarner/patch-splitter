@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Form } from 'semantic-ui-react';
+import { Form, Icon } from 'semantic-ui-react';
 
 type Props = {
   data: string,
@@ -13,8 +13,9 @@ export class Preview extends React.Component<Props> {
       <div>
         <h2>Preview result</h2>
         <Form onSubmit={this.download}>
-          <Button type="submit" primary>Download</Button>
-          <Button type="submit" color="green">Validate</Button>
+          <Form.Button type="submit" primary><Icon name="download"/> as one file</Form.Button>
+          <Form.Button type="submit" primary><Icon name="download"/> as separate files (in zip)</Form.Button>
+          <Form.Button type="submit" color="green">Validate</Form.Button>
         </Form>
         {this.renderText(data)}
       </div>

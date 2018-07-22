@@ -107,7 +107,8 @@ export class Home extends React.Component<{}, State> {
     );
   }
 
-  private handlers = { // tslint:disable-line
+  // tslint:disable-next-line
+  private handlers = {
     changeInput: this.changeInput,
     changeWorkInProgress: this.changeWorkInProgress,
   };
