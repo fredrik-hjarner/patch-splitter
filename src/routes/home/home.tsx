@@ -15,16 +15,27 @@ export type FileType = {
   enabled: boolean,
 };
 
+export type ChangeWorkInProgressType = (index: number, enabled: boolean) => void;
+
+export type ContextType = {
+  changeInput: (text: string) => void,
+  changeWorkInProgress: ChangeWorkInProgressType,
+  input: string,
+  result: string,
+  workInProgress: FileType[],
+};
+
+// I actually dont't really use the default values.
 export const Context = createContext({
-  changeInput: (_: string) => {},
-  changeWorkInProgress: () => {},
-  input: '',
-  result: '',
+  changeInput: null as any,
+  changeWorkInProgress: null as any,
+  input: null as any,
+  result: null as any,
   workInProgress: [] as FileType[],
 });
 
 type StyleMap = {
-  [key in 'header' | 'page' | 'columns' ]: CSSProperties
+  [key in 'header' | 'columns' ]: CSSProperties
 };
 
 const styles: StyleMap = {
@@ -32,13 +43,6 @@ const styles: StyleMap = {
   header: {
     padding: '50px 0 10px 0',
     textAlign: 'center',
-  },
-
-  page: {
-    // display: 'grid',
-    // gridTemplateRows: 'auto 1fr',
-    // height: '100vh',
-    // position: 'relative',
   },
 
   columns: {
@@ -51,11 +55,11 @@ const styles: StyleMap = {
 
 };
 
-interface State {
-  input: string;
-  workInProgress: FileType[];
-  result: string;
-}
+type State = {
+  input: string,
+  workInProgress: FileType[],
+  result: string,
+};
 
 export class Home extends React.Component<{}, State> {
   public state = {
@@ -66,7 +70,7 @@ export class Home extends React.Component<{}, State> {
 
   public render() {
     return (
-      <div style={styles.page}>
+      <div>
         <h1 style={styles.header}>Patch/Diff Splitter</h1>
         <div style={styles.columns}>
           <Context.Provider value={{ ...this.state, ...this.handlers }}>
@@ -93,10 +97,26 @@ export class Home extends React.Component<{}, State> {
     });
   }
 
-  private changeWorkInProgress = () => {};
+  private changeWorkInProgress = (index: number, enabled: boolean) => {
+    this.setState(
+      state => ({
+        ...state,
+        workInProgress: state.workInProgress.map(x => x.index === index ? { ...x, enabled } : x),
+      }),
+      this.updateResult,
+    );
+  }
 
   private handlers = { // tslint:disable-line
     changeInput: this.changeInput,
     changeWorkInProgress: this.changeWorkInProgress,
   };
+
+  // updates `result` from `workInProgress`
+  private updateResult = () => this.setState(state => ({
+    result: state.workInProgress
+      .filter(({ enabled }) => enabled)
+      .map(({ text }) => text)
+      .join(''),
+  }))
 }

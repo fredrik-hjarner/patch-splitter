@@ -28,5 +28,5 @@ export class Preview extends React.Component<Props> {
     padding: 0,
   })
 
-  private download = () => {}
+  private download = () => {};
 }
