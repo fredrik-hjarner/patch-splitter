@@ -8,8 +8,8 @@ import { Context } from './home';
 // };
 
 export class InputForm extends React.Component {
-  // TODO: remove mockup
-  private input = `............................
+	// TODO: remove mockup
+	private input = `............................
 diff --git 111111111
 aaaaaaaaaaaaa
 bbbbbbbbbbbb
@@ -38,36 +38,36 @@ ppppppppppppp
 diff --git
 ------------------`;
 
-  public render() {
+	public render() {
 
-    return (
-      <div>
-        <h2>Original input</h2>
-        <Context.Consumer>
-          {({ changeInput }) => (
-            <Form onSubmit={() => this.load(changeInput)}>
-              <Form.Field>
-                <TextArea onChange={this.handleChange} rows={30}/>
-              </Form.Field>
-              <Button type="submit">Load</Button>
-            </Form>
-          )}
-        </Context.Consumer>
-      </div>
-    );
-  }
+		return (
+			<div>
+				<h2>Original input</h2>
+				<Context.Consumer>
+					{({ changeInput }) => (
+						<Form onSubmit={() => this.load(changeInput)}>
+							<Form.Field>
+								<TextArea onChange={this.handleChange} rows={30}/>
+							</Form.Field>
+							<Button type="submit">Load</Button>
+						</Form>
+					)}
+				</Context.Consumer>
+			</div>
+		);
+	}
 
-  private load = (changeInput: any) => {
-    const text = lf(this.input);
-    // take out the header (if one exists).
-    // take out the footer (if one exists).
-    // const files = splitPerFile(text);
+	private load = (changeInput: any) => {
+		const text = lf(this.input);
+		// take out the header (if one exists).
+		// take out the footer (if one exists).
+		// const files = splitPerFile(text);
 
-    // this.props.onDone(files);
-    changeInput(text);
-  }
+		// this.props.onDone(files);
+		changeInput(text);
+	}
 
-  private handleChange = (_: any, { value }: { value: string}) => { // TODO: how do I write this type???
-    this.input = value;
-  }
+	private handleChange = (_: any, { value }: { value: string}) => { // TODO: how do I write this type???
+		this.input = value;
+	}
 }

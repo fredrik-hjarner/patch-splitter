@@ -5,36 +5,36 @@ import { Actions } from 'routes/home/output/actions';
 import { randomBgColor } from 'utils';
 
 type StyleMap = {
-  [key in 'columns' ]: CSSProperties
+	[key in 'columns' ]: CSSProperties
 };
 
 const styles: StyleMap = {
-  columns: {
-    display: 'grid',
-    gridTemplateColumns: 'auto 1fr',
-  },
+	columns: {
+		display: 'grid',
+		gridTemplateColumns: 'auto 1fr',
+	},
 };
 
 type Props = {
-  file: FileType,
+	file: FileType,
 };
 
 export class File extends React.Component<Props> {
-  public render() {
-    return (
-      <div style={styles.columns}>
-        <Actions file={this.props.file}/>
-        <div style={{ overflowX: 'auto', overflowY: 'visible', height: '100%', ...randomBgColor() }}>
-          {this.renderText()}
-        </div>
-      </div>
-    );
-  }
+	public render() {
+		return (
+			<div style={styles.columns}>
+				<Actions file={this.props.file}/>
+				<div style={{ overflowX: 'auto', overflowY: 'visible', height: '100%', ...randomBgColor() }}>
+					{this.renderText()}
+				</div>
+			</div>
+		);
+	}
 
-  private renderText = () => <pre style={this.createStyle()}>{this.props.file.text}</pre>;
+	private renderText = () => <pre style={this.createStyle()}>{this.props.file.text}</pre>;
 
-  private createStyle = () => ({
-    margin: 0,
-    padding: 0,
-  })
+	private createStyle = () => ({
+		margin: 0,
+		padding: 0,
+	})
 }

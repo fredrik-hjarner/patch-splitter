@@ -11,18 +11,18 @@ import 'semantic-ui-css/semantic.min.css';
 import 'styles/global';
 
 const Routes = () => (
-  <Switch>
-    <Route exact path="/" component={() => <StrictMode><Home/></StrictMode>}/>
-    <Redirect path="*" to="/"/>
-  </Switch>
+	<Switch>
+		<Route exact path="/" component={() => <StrictMode><Home/></StrictMode>}/>
+		<Redirect path="*" to="/"/>
+	</Switch>
 );
 
 const Root = () => (
-  <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <Routes/>
-    </ConnectedRouter>
-  </Provider>
+	<Provider store={store}>
+		<ConnectedRouter history={history}>
+			<Routes/>
+		</ConnectedRouter>
+	</Provider>
 );
 
 render(<Root/>, document.getElementById('react-root'));
